@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -8,7 +9,8 @@ namespace UnityStandardAssets.Vehicles.Car
     public class CarUserControl : MonoBehaviour
     {
         private CarController m_Car; // the car controller we want to use
-
+        [SerializeField] GameObject GameOverScreen;
+        [SerializeField] GameObject m_player;
 
         private void Awake()
         {
@@ -29,5 +31,31 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Car.Move(h, v, v, 0f);
 #endif
         }
+
+        private void Update()
+        {
+            if (m_player.transform.rotation.z == 180)
+            {
+                GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
+            
+                StartCoroutine(WaitnWait());
+                if(m_player.transform.rotation.z == 180)
+                {
+                    GameOverScreen.SetActive(true);
+                }
+            
+        }
+
+        IEnumerator WaitnWait()
+        {
+            yield return new WaitForSeconds(3); 
+        }
+
+
     }
 }
