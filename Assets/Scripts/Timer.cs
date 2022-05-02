@@ -16,6 +16,8 @@ public class Timer : MonoBehaviour
             timer += Time.deltaTime;
         
             Timertext.text = Mathf.Floor(timer).ToString();
+
+            
     }
 
 }
