@@ -4843,6 +4843,9 @@ GameObject:
   - component: {fileID: 8103877734477161604}
   - component: {fileID: 8103877734477161607}
   - component: {fileID: 8103877734477161606}
+  - component: {fileID: 1514799262}
+  - component: {fileID: 1514799263}
+  - component: {fileID: 1514799264}
   m_Layer: 0
   m_Name: PlayerCar
   m_TagString: Player
@@ -4880,7 +4883,7 @@ Rigidbody:
   m_GameObject: {fileID: 8103877734477161657}
   serializedVersion: 2
   m_Mass: 500
-  m_Drag: 0.1
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -4922,12 +4925,18 @@ MonoBehaviour:
   m_FullTorqueOverAllWheels: 2500
   m_ReverseTorque: 500
   m_MaxHandbrakeTorque: 100000000
-  m_Downforce: 50
+  m_Downforce: 80
   m_SpeedType: 0
-  m_Topspeed: 200
+  m_Topspeed: 120
   m_RevRangeBoundary: 1
-  m_SlipLimit: 0.5
+  m_SlipLimit: 0.3
   m_BrakeTorque: 20000
+  m_motorTorqueToIncreaseSpeed: 20
+  m_CurrentSpeed: 0
+  m_DelaySteer: 0.04
+  m_hardSteerStopTimer: 0.1
+  m_PowerSteering: 1
+  m_GameOverScreenText: {fileID: 0}
 --- !u!114 &8103877734477161607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4940,6 +4949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96468c245ae8e0d4f8f1c7a7b8b0542e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverScreen: {fileID: 0}
+  m_player: {fileID: 8103877734477161657}
 --- !u!114 &8103877734477161606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,6 +4975,46 @@ MonoBehaviour:
   maxRolloffDistance: 500
   dopplerLevel: 1
   useDoppler: 1
+--- !u!114 &1514799262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103877734477161657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a5629fecd93034f9679de94ea05713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Score: 0
+  m_ScoreText: {fileID: 0}
+--- !u!114 &1514799263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103877734477161657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0447b00fcacadaa46ac56d8f7676f9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1514799264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103877734477161657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9c28c9ee83a98479fcd98107d2c617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 8103877734477161657}
+  m_GameOverText: {fileID: 0}
 --- !u!1 &8103877734484865664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,7 +5201,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 1
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!82 &8103877734944843386
 AudioSource:
@@ -5489,7 +5540,7 @@ GameObject:
   - component: {fileID: 8103877735291447534}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5572,7 +5623,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 1
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!82 &8103877735700101517
 AudioSource:
@@ -5777,7 +5828,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 1
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!82 &8103877735869327221
 AudioSource:
@@ -6137,7 +6188,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 1
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!82 &8103877736491131179
 AudioSource:

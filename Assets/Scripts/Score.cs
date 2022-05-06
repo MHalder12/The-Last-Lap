@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     
     public float m_Score = 0f;
     [SerializeField] private Text m_ScoreText;
+    
 
     // Update is called once per frame
     void Update()
@@ -21,6 +22,13 @@ public class Score : MonoBehaviour
         if(collision.gameObject.tag.Equals("Obstacle")){
             m_Score+=10f;
             
+        }
+        if(collision.gameObject.tag.Equals("Coin")){
+            Destroy(collision.gameObject);
+            m_Score+=5f;
+        }
+        if(collision.gameObject.tag.Equals("NotTrack")){
+            m_Score-=2f;
         }
     }
 }
